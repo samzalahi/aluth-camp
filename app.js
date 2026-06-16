@@ -26,6 +26,7 @@ app.set("view engine", "ejs");
 // Middelwares
 app.use(express.urlencoded({ extended: true })); // to load/parse form data by req
 app.use(methodOverride("_method"));
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.render("home");
