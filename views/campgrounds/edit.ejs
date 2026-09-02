@@ -1,14 +1,86 @@
 <% layout('layouts/boilerplate.ejs') %>
-<h1>Edit <%= campground.title %></h1>
-<form action="/campgrounds/<%= campground._id %>?_method=put" method="post">
-  <div>
-    <label for="title">Title</label>
-    <input type="text" name="campground[title]" id="title" value="<%= campground.title %>" />
+<form action="/campgrounds/<%= campground._id %>?_method=put" method="post" class="validated-form" novalidate>
+  <div class="mt-10 gap-x-6 flex flex-col items-center">
+    <h1 class="text-3xl font-medium mb-3">Edit <%= campground.title %> Campground</h1>
+    <div class="w-6/12">
+      <label for="title" class="block text-sm/6 font-medium text-gray-900">Title</label>
+      <div class="mt-2">
+        <input
+          id="title"
+          type="text"
+          required
+          name="campground[title]"
+          placeholder="Title"
+          value="<%= campground.title %>"
+          class="block w-full rounded-md min-w-0 grow px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 transition-colors" />
+        <p class="invisible text-red-500 text-sm mt-1">Please enter title.</p>
+      </div>
+    </div>
+    <div class="w-6/12">
+      <label for="location" class="block text-sm/6 font-medium text-gray-900">Location</label>
+      <div class="mt-2">
+        <input
+          id="location"
+          type="text"
+          required
+          name="campground[location]"
+          placeholder="Location"
+          value="<%= campground.location %>"
+          class="block w-full rounded-md min-w-0 grow px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 transition-colors" />
+        <p class="invisible text-red-500 text-sm mt-1">Please enter location.</p>
+      </div>
+    </div>
+    <div class="w-6/12">
+      <label for="image" class="block text-sm/6 font-medium text-gray-900">Image URL</label>
+      <div class="mt-2">
+        <input
+          id="image"
+          type="text"
+          required
+          name="campground[image]"
+          placeholder="Image Url"
+          value="<%= campground.image %>"
+          class="block w-full rounded-md min-w-0 grow px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 transition-colors" />
+        <p class="invisible text-red-500 text-sm mt-1">Please upload image.</p>
+      </div>
+    </div>
+    <div class="w-6/12">
+      <label for="price" class="block text-sm/6 font-medium text-gray-900">Campground Price</label>
+      <div class="mt-2">
+        <input
+          id="price"
+          type="text"
+          required
+          name="campground[price]"
+          placeholder="$ 0.00"
+          value="<%= campground.price %>"
+          class="block w-full rounded-md min-w-0 grow px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 transition-colors" />
+        <p class="invisible text-red-500 text-sm mt-1">Please enter price.</p>
+      </div>
+    </div>
+    <div class="w-6/12">
+      <label for="description" class="block text-sm/6 font-medium text-gray-900">Description</label>
+      <div class="mt-2">
+        <textarea
+          id="description"
+          name="campground[description]"
+          required
+          rows="3"
+          class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 transition-colors">
+<%= campground.description %></textarea
+        >
+        <p class="invisible text-red-500 text-sm mt-1">Please enter description.</p>
+      </div>
+    </div>
+    <div class="w-6/12 mt-2 flex items-center gap-x-6">
+      <button
+        type="submit"
+        class="rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+        Update Campground
+      </button>
+      <div>
+        <a href="/campgrounds/<%= campground._id %>">Back to Campground</a>
+      </div>
+    </div>
   </div>
-  <div>
-    <label for="location">Location</label>
-    <input type="text" name="campground[location]" id="location" value="<%= campground.location %>" />
-  </div>
-  <button>Update Campground</button>
 </form>
-<a href="/campgrounds/<%= campground._id %>">Back to Campground</a>
